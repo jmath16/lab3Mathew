@@ -1,5 +1,8 @@
 
 
+//import java.sql.Connection;
+import org.example.Customer;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -146,7 +149,3 @@ public class MySQL {
     }
 
 }
-
-
-
-
