@@ -1,31 +1,54 @@
-
-public class Main{
+public class Main {
 
     public static void main(String[] args) {
 
-        // Create a customer with product details
-        Customer customer1 = new Customer(1, "Jason", "Mathew", "jam32@gmail.com", "Danish", 2, 2.50);
+        // Create database objects
+        MySQL mysql = new MySQL();
+        Mongo mongo = new Mongo();
 
-        System.out.println("Customer Details:");
-        System.out.println(customer1);
+        // Create customers
+        Customer c1 = new Customer(1, "Jason", "Mathew", "jam32@gmail.com", "Danish", 2, 3.00);
+        Customer c2 = new Customer(2, "Ryan", "Abraham", "ryan@gmail.com", "Coffee", 1, 4.00);
+        Customer c3 = new Customer(3, "LeBron", "James", "TheKing@gmail.com", "Sandwich", 4, 22.00);
 
-        // Calculate total cost for the product purchased
-        double totalCost = customer1.getPrice() * customer1.getQuantity();
+        // -------------------------
+        // CREATE
+        // -------------------------
 
-        System.out.println("\nTotal Cost: $" + totalCost);
+        mysql.create(c1);
+        mysql.create(c2);
+        mysql.create(c3);
 
-        //Create two more customers with product details
-        Customer customer2 = new Customer(2, "Ryan", "Abraham", "ryan@gmail.com", "Coffee", 1, 4.99);
+        mongo.create(c1);
+        mongo.create(c2);
+        mongo.create(c3);
 
-        Customer customer3 = new Customer(3, "Lebron", "James", "theking@gmail.com", "Burger", 3, 26.75);
+        // -------------------------
+        // READ
+        // -------------------------
 
-        System.out.println("\nAdditional Customers:");
-        System.out.println(customer2);
-        System.out.println(customer3);
+        mysql.read(1);
+        mongo.read(1);
 
-        // Show total cost for each customer
-        System.out.println("\nTotal Costs:");
-        System.out.println("Customer 2: $" + (customer2.getPrice() * customer2.getQuantity()));
-        System.out.println("Customer 3: $" + (customer3.getPrice() * customer3.getQuantity()));
+        // -------------------------
+        // UPDATE
+        // -------------------------
+
+        c1.setProduct("Danish");
+        c1.setPrice(3.00);
+
+        mysql.update(c1);
+        mongo.update(c1);
+
+        // -------------------------
+        // DELETE
+        // -------------------------
+
+        mysql.delete(3);
+        mongo.delete(3);
+
+        // Close connections
+        mysql.close();
+        mongo.close();
     }
 }
