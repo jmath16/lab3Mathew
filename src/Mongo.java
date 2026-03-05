@@ -1,3 +1,12 @@
+/** Project: Lab 3 Database Assignment
+ * Purpose Details: Perform CRUD Create. Read, Update and Delete
+ * Course: IST 242
+ * Author: Jason Mathew
+ * Date Developed: 2/28/26
+ * Last Date Changed: 3/05/26
+ * Rev:
+
+ */
 
 import com.mongodb.client.*;
 import org.bson.Document;
